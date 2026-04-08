@@ -2,4 +2,9 @@ module github.com/5c077m4n/pikud-haoref-api-go/alerts
 
 go 1.26.1
 
-require github.com/5c077m4n/pikud-haoref-api-go v0.1.0
+require (
+	github.com/5c077m4n/pikud-haoref-api-go/poller v0.0.0-20260408185328-3ae3bf548833
+	github.com/goccy/go-json v0.10.6
+)
+
+replace github.com/5c077m4n/pikud-haoref-api-go/poller => ../poller/

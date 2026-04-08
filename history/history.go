@@ -3,18 +3,19 @@ package history
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log/slog"
 	"net/http"
 	"time"
 
 	"github.com/5c077m4n/pikud-haoref-api-go/poller"
+	"github.com/goccy/go-json"
 )
 
-func FetchAlerts() ([]*Alert, error) {
-	req, err := http.NewRequest(
-		"GET",
+func FetchAlerts(ctx context.Context) ([]*Alert, error) {
+	req, err := http.NewRequestWithContext(
+		ctx,
+		http.MethodGet,
 		"https://www.oref.org.il/WarningMessages/alert/History/AlertsHistory.json",
 		nil,
 	)
@@ -44,7 +45,7 @@ func FetchAlerts() ([]*Alert, error) {
 	}
 
 	var alerts []*Alert
-	if err := json.NewDecoder(resp.Body).Decode(&alerts); err != nil {
+	if err := json.NewDecoder(resp.Body).DecodeContext(ctx, &alerts); err != nil {
 		return nil, err
 	}
 

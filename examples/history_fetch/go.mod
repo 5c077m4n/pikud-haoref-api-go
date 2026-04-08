@@ -1,7 +1,15 @@
-module github.com/5c077m4n/pikud-haoref-alerts-api-go/examples/history_fetch
+module github.com/5c077m4n/pikud-haoref-api-go/examples/history_fetch
 
 go 1.26.1
 
-require github.com/5c077m4n/pikud-haoref-api-go/history v0.0.0-20260318171817-d99918ed7445
+replace (
+	github.com/5c077m4n/pikud-haoref-api-go/history => ../../history/
+	github.com/5c077m4n/pikud-haoref-api-go/poller => ../../poller/
+)
 
-require github.com/5c077m4n/pikud-haoref-api-go v0.1.0 // indirect
+require github.com/5c077m4n/pikud-haoref-api-go/history v0.0.0
+
+require (
+	github.com/5c077m4n/pikud-haoref-api-go/poller v0.0.0 // indirect
+	github.com/goccy/go-json v0.10.6 // indirect
+)

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log/slog"
 	"sync"
 
@@ -8,7 +9,7 @@ import (
 )
 
 var fetchAllCityNamesOnce = sync.OnceValues(func() ([]string, error) {
-	allCities, err := cities.FetchCities()
+	allCities, err := cities.FetchCities(context.TODO())
 	if err != nil {
 		return nil, err
 	}

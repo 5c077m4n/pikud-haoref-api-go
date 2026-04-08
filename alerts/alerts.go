@@ -3,18 +3,19 @@ package alerts
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log/slog"
 	"net/http"
 	"time"
 
 	"github.com/5c077m4n/pikud-haoref-api-go/poller"
+	"github.com/goccy/go-json"
 )
 
-func FetchAlert() (*Alert, error) {
-	req, err := http.NewRequest(
-		"GET",
+func FetchAlert(ctx context.Context) (*Alert, error) {
+	req, err := http.NewRequestWithContext(
+		ctx,
+		http.MethodGet,
 		"https://www.oref.org.il/WarningMessages/alert/alerts.json",
 		nil,
 	)
@@ -47,7 +48,7 @@ func FetchAlert() (*Alert, error) {
 	}
 
 	var alert *Alert
-	if err := json.NewDecoder(resp.Body).Decode(alert); err != nil {
+	if err := json.NewDecoder(resp.Body).DecodeContext(ctx, alert); err != nil {
 		return nil, err
 	}
 

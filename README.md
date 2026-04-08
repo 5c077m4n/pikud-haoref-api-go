@@ -29,7 +29,7 @@ import "github.com/5c077m4n/pikud-haoref-api-go/history"
 
 **Functions:**
 
-- `FetchAlerts()` - Fetches all historical alerts
+- `FetchAlerts(ctx context.Context)` - Fetches all historical alerts
 - `Stream(ctx context.Context)` - Returns a channel that streams alerts
 
 ### Cities
@@ -43,7 +43,8 @@ import "github.com/5c077m4n/pikud-haoref-api-go/cities"
 
 **Functions:**
 
-- `FetchCities()` - Returns all cities with metadata (name, area, bunker time)
+- `FetchCities(ctx context.Context)` - Returns all cities with metadata (name,
+  area, bunker time)
 
 ### Alerts (Deprecated)
 
@@ -52,6 +53,10 @@ The `alerts` package is deprecated. Use `history` instead.
 ```go
 import "github.com/5c077m4n/pikud-haoref-api-go/alerts"
 ```
+
+**Functions:**
+
+- `FetchAlert(ctx context.Context)` - Fetch current alert
 
 ## Examples
 

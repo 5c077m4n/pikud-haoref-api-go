@@ -1,4 +1,2 @@
-github.com/5c077m4n/pikud-haoref-api-go v0.1.0 h1:CV5zsq/xrKCnKkrAb1h6tNQWY4XX40NpzOI4XhBvjm0=
-github.com/5c077m4n/pikud-haoref-api-go v0.1.0/go.mod h1:gajFJqh9Nh6mnWd+f2BvuinDMSW9KIP7LrIf5xeK4Fc=
-github.com/5c077m4n/pikud-haoref-api-go/history v0.0.0-20260318171817-d99918ed7445 h1:AaOVRUiSahtCMc9FN6dvl/p4Y3JYUs3+MUu4r3WI574=
-github.com/5c077m4n/pikud-haoref-api-go/history v0.0.0-20260318171817-d99918ed7445/go.mod h1:CpK6MeThuKE6RoNzNASXkLIRp22BaS6l8vsOQfOmKXY=
+github.com/goccy/go-json v0.10.6 h1:p8HrPJzOakx/mn/bQtjgNjdTcN+/S6FcG2CTtQOrHVU=
+github.com/goccy/go-json v0.10.6/go.mod h1:oq7eo15ShAhp70Anwd5lgX2pLfOS3QCiwU/PULtXL6M=

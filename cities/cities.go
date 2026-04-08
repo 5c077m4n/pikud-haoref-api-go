@@ -2,16 +2,19 @@
 package cities
 
 import (
-	"encoding/json"
+	"context"
 	"fmt"
 	"log/slog"
 	"net/http"
 	"time"
+
+	"github.com/goccy/go-json"
 )
 
-func FetchCities() ([]CityData, error) {
-	req, err := http.NewRequest(
-		"GET",
+func FetchCities(ctx context.Context) ([]CityData, error) {
+	req, err := http.NewRequestWithContext(
+		ctx,
+		http.MethodGet,
 		"https://alerts-history.oref.org.il/Shared/Ajax/GetDistricts.aspx",
 		nil,
 	)
@@ -44,7 +47,7 @@ func FetchCities() ([]CityData, error) {
 	}
 
 	var cities []CityData
-	if err := json.NewDecoder(resp.Body).Decode(&cities); err != nil {
+	if err := json.NewDecoder(resp.Body).DecodeContext(ctx, &cities); err != nil {
 		return nil, err
 	}
 

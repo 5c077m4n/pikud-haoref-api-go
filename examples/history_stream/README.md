@@ -18,4 +18,3 @@ the `history` package with streaming.
 cd examples/history_stream
 go run main.go
 ```
-

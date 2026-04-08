@@ -5,7 +5,8 @@ This example demonstrates how to fetch historical alerts a single time using the
 
 ## What it does
 
-1. Calls `history.FetchAlerts()` to retrieve all historical alerts from the API
+1. Calls `history.FetchAlerts(context.TODO())` to retrieve all historical alerts
+   from the API
 2. Returns a slice of `Alert` structs containing:
    - Date: When the alert occurred
    - Title: Alert title

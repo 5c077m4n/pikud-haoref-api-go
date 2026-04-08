@@ -6,12 +6,13 @@ import (
 	"time"
 )
 
-type Fetcher[T any] func() (T, error)
-
-type Poller[T any] struct {
-	fetcher  Fetcher[T]
-	interval time.Duration
-}
+type (
+	Fetcher[T any] func(context.Context) (T, error)
+	Poller[T any]  struct {
+		fetcher  Fetcher[T]
+		interval time.Duration
+	}
+)
 
 func New[T any](fetcher Fetcher[T], interval time.Duration) *Poller[T] {
 	return &Poller[T]{fetcher: fetcher, interval: interval}
@@ -33,7 +34,7 @@ func (p *Poller[T]) Stream(ctx context.Context) (<-chan T, <-chan error) {
 			case <-ctx.Done():
 				return
 			case <-ticker.C:
-				data, err := p.fetcher()
+				data, err := p.fetcher(ctx)
 				if err != nil {
 					errors <- err
 					continue
